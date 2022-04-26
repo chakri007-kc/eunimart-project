@@ -9,7 +9,6 @@ const Card = () => {
     const populateUsers = async () => {
         const res = await axios.get(`https://reqres.in/api/users/${id}`);
         setUser(res.data.data);
-        // setLoading(true)
     }
 
     useEffect( () => {
@@ -17,11 +16,14 @@ const Card = () => {
     }, [])
 
   return (
-    <div className='card'>
-        <h2>{user.email}</h2>
-        <h2>{user.first_name}</h2> 
-        <h2>{user.last_name}</h2>
-        <img src={user.avatar} alt=""></img>
+    <div className='all-cards'>
+      <div className='card'>
+          <img className='img' src={user.avatar} alt=""></img>
+          <h2 className='email'>Email : {user.email}</h2>
+          <h2 className='fn'>First name : {user.first_name}</h2> 
+          <h2 className='ln'>Last Name : {user.last_name}</h2>
+          {/* <h2 className='ln'>img link : {user.avatar}</h2> */}
+      </div>
     </div>
   )
 }
